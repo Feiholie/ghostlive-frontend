@@ -1,1 +1,0 @@
-# ghostlive-frontend
