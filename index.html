@@ -30,12 +30,61 @@
             <!-- Controls -->
             <div class="lg:col-span-1 space-y-6">
                 <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
-                    <label class="block text-sm font-medium text-slate-400 mb-2">Target Username TikTok</label>
-                    <input type="text" id="usernameInput" class="w-full bg-slate-800 border border-slate-700 text-white rounded-lg p-3 mb-4 focus:outline-none focus:border-purple-500" placeholder="Contoh: luna_live">
-                    <button id="btnConnect" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 rounded-lg transition">
-                        Connect TikTok
-                    </button>
-                </div>
+
+    <label class="block text-sm font-medium text-slate-400 mb-2">
+        Target Username TikTok
+    </label>
+
+    <input
+        type="text"
+        id="usernameInput"
+        class="w-full bg-slate-800 border border-slate-700 text-white rounded-lg p-3 mb-4 focus:outline-none focus:border-purple-500"
+        placeholder="Contoh: luna_live">
+
+    <h3 class="text-white font-bold mb-3">
+        Product Knowledge
+    </h3>
+
+    <input
+        id="productName"
+        class="w-full bg-slate-800 border border-slate-700 text-white rounded-lg p-3 mb-3"
+        placeholder="Nama Produk">
+
+    <input
+        id="productPrice"
+        class="w-full bg-slate-800 border border-slate-700 text-white rounded-lg p-3 mb-3"
+        placeholder="Harga Produk">
+
+    <textarea
+        id="productDescription"
+        rows="3"
+        class="w-full bg-slate-800 border border-slate-700 text-white rounded-lg p-3 mb-3"
+        placeholder="Deskripsi Produk"></textarea>
+
+    <textarea
+        id="productBenefits"
+        rows="3"
+        class="w-full bg-slate-800 border border-slate-700 text-white rounded-lg p-3 mb-3"
+        placeholder="Keunggulan Produk"></textarea>
+
+    <textarea
+        id="productPromo"
+        rows="2"
+        class="w-full bg-slate-800 border border-slate-700 text-white rounded-lg p-3 mb-3"
+        placeholder="Promo / Bonus"></textarea>
+
+    <input
+        id="productCTA"
+        class="w-full bg-slate-800 border border-slate-700 text-white rounded-lg p-3 mb-4"
+        placeholder="Call To Action">
+
+    <button
+        id="btnConnect"
+        class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 rounded-lg transition">
+        Start Live AI
+    </button>
+
+</div>
 
                 <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
                     <h3 class="text-slate-400 font-semibold mb-4">Statistik</h3>
@@ -104,9 +153,25 @@
         });
 
         // Connection Action
-        ui.btnConnect.onclick = () => {
-            const user = ui.username.value;
-            if(user) socket.emit('connect_tiktok', user);
+      ui.btnConnect.onclick = () => {
+
+    const payload = {
+        username: ui.username.value,
+
+        product: {
+            name: document.getElementById('productName').value,
+            price: document.getElementById('productPrice').value,
+            description: document.getElementById('productDescription').value,
+            benefits: document.getElementById('productBenefits').value,
+            promo: document.getElementById('productPromo').value,
+            cta: document.getElementById('productCTA').value
+        }
+    };
+
+    console.log('PRODUCT DATA:', payload);
+
+    socket.emit('connect_tiktok', payload);
+};
         };
     </script>
 </body>
