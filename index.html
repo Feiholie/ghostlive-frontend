@@ -152,8 +152,8 @@
             audio.play();
         });
 
-        // Connection Action
-      ui.btnConnect.onclick = () => {
+       // Connection Action
+ui.btnConnect.onclick = () => {
 
     const payload = {
         username: ui.username.value,
@@ -172,7 +172,7 @@
 
     socket.emit('connect_tiktok', payload);
 };
-        };
-    </script>
+
+</script>
 </body>
 </html>
