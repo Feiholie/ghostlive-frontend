@@ -111,7 +111,7 @@
 
    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
 <script>
-    const socket = io("https://ghostlive-ai-mvp-production-4fa6.up.railway.app", {
+    const socket = io("ghostlive-ai-mvp-production.up.railway.app", {
         transports: ["websocket", "polling"]
     });
     socket.on("connect", () => {
