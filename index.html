@@ -114,7 +114,13 @@
     const socket = io("https://ghostlive-ai-mvp-production-4fa6.up.railway.app", {
         transports: ["websocket", "polling"]
     });
-        
+    socket.on("connect", () => {
+    console.log("✅ CONNECTED", socket.id);
+});
+
+socket.on("connect_error", (err) => {
+    console.error("❌ CONNECT ERROR:", err);
+});    
         // UI References
         const ui = {
             btnConnect: document.getElementById('btnConnect'),
